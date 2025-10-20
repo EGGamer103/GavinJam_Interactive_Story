@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Vector3 velocity;
 
+    // path tracking
+    private int path;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -74,9 +77,9 @@ public class PlayerController : MonoBehaviour
     }
     private void InteractionCheck()
     {
-        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance))
+        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
         {
-            if (hit.collider.gameObject.layer == 7 && (currentInteractable == null || hit.collider.gameObject.GetInstanceID() != currentInteractable.GetInstanceID()))
+            if (hit.collider.gameObject.layer == 6 && (currentInteractable == null || hit.collider.gameObject.GetInstanceID() != currentInteractable.GetInstanceID()))
             {
                 hit.collider.TryGetComponent(out currentInteractable);
 
@@ -91,5 +94,10 @@ public class PlayerController : MonoBehaviour
             currentInteractable.OnLoseFocus();
             currentInteractable = null;
         }
+    }
+
+    public void TrackPath(int responseVal)
+    {
+        path += responseVal;
     }
 }

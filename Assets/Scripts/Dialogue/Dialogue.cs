@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI DialogTitleText, DialogBodyText; 
     public GameObject responseButtonPrefab;
     public Transform responseButtonContainer;
+    public PlayerController player;
 
     private void Awake()
     {
@@ -19,10 +20,6 @@ public class Dialogue : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
         }
         HideDialogue();
     }
@@ -54,6 +51,7 @@ public class Dialogue : MonoBehaviour
         if (!response.nextNode.IsLastNode())
         {
             StartDialogue(title, response.nextNode);
+            player.TrackPath(response.ending);
         }
         else
         {

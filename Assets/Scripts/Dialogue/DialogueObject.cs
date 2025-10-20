@@ -14,6 +14,8 @@ public class DialogueObject : Interactable
     public override void OnInteract()
     {
         SpeakTo();
+        Debug.Log("looked at");
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public override void OnFocus()

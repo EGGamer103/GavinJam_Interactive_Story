@@ -13,8 +13,45 @@ MonoBehaviour:
   m_Name: Cake
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScriptable
   DiaNode:
-    dialogueText: 
+    dialogueText: Just a piece of cake...
     responses:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - responseText: ...
+      nextNode:
+        dialogueText: I am kind of hungry.
+        responses:
+        - responseText: ...
+          nextNode:
+            dialogueText: A piece of cake wouldn't hurt.
+            responses:
+            - responseText: Eat Cake Later
+              nextNode:
+                dialogueText: It's not gonna get up and leave I guess.
+                responses:
+                - responseText: ...
+                  nextNode:
+                    dialogueText: 
+                    responses: []
+                  ending: 0
+              ending: -1
+            - responseText: Put Cake Back
+              nextNode:
+                dialogueText: No... I shouldn't.
+                responses:
+                - responseText: ...
+                  nextNode:
+                    dialogueText: 
+                    responses: []
+                  ending: 0
+              ending: 0
+            - responseText: Steal it
+              nextNode:
+                dialogueText: No one will notice... right?
+                responses:
+                - responseText: (Cake Get)
+                  nextNode:
+                    dialogueText: 
+                    responses: []
+                  ending: 0
+              ending: 1
+          ending: 0
+      ending: 0
